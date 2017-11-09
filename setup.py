@@ -18,7 +18,7 @@ setup(
     author_email='me@mkelly.me',
     license='MIT',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=['click==6.7'],
+    install_requires=['click', 'requests'],
     entry_points={
         'console_scripts': [
             'balrog-add-xpi-to-rule=balrog_add_xpi_to_rule:main',
