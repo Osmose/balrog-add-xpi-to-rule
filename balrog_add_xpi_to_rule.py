@@ -1,6 +1,6 @@
-import difflib
 import hashlib
 import json
+from datetime import datetime
 from urllib.parse import urljoin
 
 import click
@@ -79,10 +79,12 @@ def main(xpi_release, rule_ids, server, product, username, password):
 
         # Save new mapping to rule
         if update_mapping:
+            ts_now = int(datetime.now().timestamp() * 1000)
             rule['mapping'] = superblob['name']
-            response = session.put(urljoin(server, f'/api/scheduled_changes/rules'), json={
+            response = session.post(urljoin(server, f'/api/scheduled_changes/rules'), json={
                 **rule,
-                'when': 60000,  # in one minute
+                'when': ts_now + 5 * 60 * 1000,  # in five minutes
+                'change_type': 'update',
                 'csrf_token': csrf_token,
             })
             try:
