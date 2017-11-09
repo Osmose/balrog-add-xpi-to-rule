@@ -17,6 +17,8 @@ the new Release to the superblob, create a new Release, and map the rule to the
 new Release. In other words, this lets you update the existing set of rules with
 the new system add-on while preserving the existing add-ons in the rule.
 
+[Balrog]: https://wiki.mozilla.org/Balrog
+
 ## Installation
 
 This isn't up on PyPI, so your best bet is to check out the repo and install it
