@@ -80,8 +80,9 @@ def main(xpi_release, rule_ids, server, product, username, password):
         # Save new mapping to rule
         if update_mapping:
             rule['mapping'] = superblob['name']
-            response = session.put(urljoin(server, f'/api/rules/{rule_id}'), json={
+            response = session.put(urljoin(server, f'/api/scheduled_changes/rules'), json={
                 **rule,
+                'when': 60000,  # in one minute
                 'csrf_token': csrf_token,
             })
             try:
